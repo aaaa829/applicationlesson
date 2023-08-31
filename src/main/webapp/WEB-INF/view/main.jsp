@@ -24,11 +24,16 @@ List<Product> list = (List<Product>)application.getAttribute("list");
 	値段：<br><input type="number" name="price"><br>
 	<input type="submit" value="登録">
 </form>
-<% if(list != null){ %>
+<% if(!list.isEmpty()){ %>
 <table border="">
-<tr><th>商品名</th><th>価格</th><th>登録日</th></tr>
+<tr><th>商品名</th><th>価格</th><th>登録日</th><th>削除</th></tr>
 <% for(Product p :list){ %>
-<tr><td><%=p.getName() %></td><td><%=p.getPrice() %></td><td><%=p.getUpdated() %></td></tr>
+<tr>
+<td><%=p.getName() %></td>
+<td><%=p.getPrice() %></td>
+<td><%=p.getUpdated() %></td>
+<td><button onclick="location.href='Main?action=delete&&id=<%=p.getId() %>'">削除</button></td>
+</tr>
 <%} %>
 </table>
 <%} %>
